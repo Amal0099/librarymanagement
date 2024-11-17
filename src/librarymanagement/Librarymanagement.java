@@ -230,19 +230,24 @@ public class Librarymanagement {
   
      
  }
-  /*  
-      */
+  
    //4
-  public static void insert (LibraryData.Categories  Category )    
+  public static void insert (LibraryData.Employees  Employee  )    
   {
      Connection conne =getConnection();
-      try  { 
-     String sql = "INSERT INTO `Categories`(`CategoryID`,`CategoryName`) VALUES (?,?)";
+       try  { 
+     String sql = "INSERT INTO `Employees`(`employeeID`,`name`,`email`,`phone`,`jobTitle`,`hireDate`,`salary`) VALUES (?,?,?,?,?,?,?)";
      PreparedStatement st =conne.prepareStatement(sql );
-     st.setInt(1, Category.getCategoryID());
-     st.setString(2, Category.getCategoryName());
+     st.setInt(1, Employee.getEmployeeID());
+     st.setString(2, Employee.getName());
+      st.setString(3, Employee.getEmail());
+     st.setString(4, Employee.getPhone());
+     
+     st.setString(5, Employee.getJobTitle());
+     st.setString(6, Employee.getHireDate());
+      st.setDouble(7, Employee.getSalary());
      st.execute();
-          System.out.println("Category insert successfully ");
+          System.out.println("Employees insert successfully ");
       conne.close();
       }
        catch (Exception e)  {
@@ -254,16 +259,19 @@ public class Librarymanagement {
   
   
    //5
-  public static void insert (LibraryData.Categories  Category )    
+  public static void insert ( LibraryData.Shifts  Shift )    
   {
      Connection conne =getConnection();
       try  { 
-     String sql = "INSERT INTO `Categories`(`CategoryID`,`CategoryName`) VALUES (?,?)";
+     String sql = "INSERT INTO `Shifts`(`shiftID`,`employeeID`,`shiftDate`,`startTime`,`startTime`) VALUES (?,?,?,?,?)";
      PreparedStatement st =conne.prepareStatement(sql );
-     st.setInt(1, Category.getCategoryID());
-     st.setString(2, Category.getCategoryName());
+     st.setInt(1, Shift.getShiftID());
+     st.setInt(2, Shift.getEmployeeID());
+      st.setString(3, Shift.getShiftDate());
+     st.setString(4, Shift.getStartTime());
+     st.setString(5, Shift.getEndTime());
      st.execute();
-          System.out.println("Category insert successfully ");
+          System.out.println("Shifts insert successfully ");
       conne.close();
       }
        catch (Exception e)  {
@@ -275,16 +283,20 @@ public class Librarymanagement {
   
   
    //6
-  public static void insert (LibraryData.Categories  Category )    
+  public static void insert (LibraryData.Borrowings  Borrow )    
   {
      Connection conne =getConnection();
-      try  { 
-     String sql = "INSERT INTO `Categories`(`CategoryID`,`CategoryName`) VALUES (?,?)";
+     try  { 
+     String sql = "INSERT INTO `Borrowings`(`borrowID`,`userID`,`bookID`,`borrowDate`,`returnDate`,`status`) VALUES (?,?,?,?,?,?)";
      PreparedStatement st =conne.prepareStatement(sql );
-     st.setInt(1, Category.getCategoryID());
-     st.setString(2, Category.getCategoryName());
+     st.setInt(1, Borrow.getBorrowID());
+     st.setInt(2, Borrow.getUserID());
+     st.setInt(3, Borrow.getBookID());
+     st.setString(4, Borrow.getBorrowDate());
+     st.setString(5, Borrow.getReturnDate());
+     st.setString(6, Borrow.getStatus());
      st.execute();
-          System.out.println("Category insert successfully ");
+          System.out.println("Borrowings insert successfully ");
       conne.close();
       }
        catch (Exception e)  {
@@ -292,20 +304,24 @@ public class Librarymanagement {
          e.printStackTrace(); }
   
      
- }
+ } 
+ 
   
   
    //7
-  public static void insert (LibraryData.Categories  Category )    
+  public static void insert ( LibraryData.Fines  Fines )    
   {
      Connection conne =getConnection();
-      try  { 
-     String sql = "INSERT INTO `Categories`(`CategoryID`,`CategoryName`) VALUES (?,?)";
+  try  { 
+     String sql = "INSERT INTO `Fines`(`fineID`,`borrowID`,`fineAmount`,`fineDate`,`paidStatus`) VALUES (?,?,?,?,?)";
      PreparedStatement st =conne.prepareStatement(sql );
-     st.setInt(1, Category.getCategoryID());
-     st.setString(2, Category.getCategoryName());
+     st.setInt(1, Fines.getFineID());
+     st.setInt(2, Fines.getBorrowID());
+      st.setDouble(3, Fines.getFineAmount());
+     st.setString(4, Fines.getFineDate());
+     st.setString(5, Fines.getPaidStatus());
      st.execute();
-          System.out.println("Category insert successfully ");
+          System.out.println("Fines insert successfully ");
       conne.close();
       }
        catch (Exception e)  {
@@ -319,16 +335,20 @@ public class Librarymanagement {
   
   
    //8
-  public static void insert (LibraryData.Categories  Category )    
+  public static void insert ( LibraryData.Memberships  Membership )    
   {
      Connection conne =getConnection();
       try  { 
-     String sql = "INSERT INTO `Categories`(`CategoryID`,`CategoryName`) VALUES (?,?)";
+     String sql = "INSERT INTO `Memberships`(`membershipID`,`userID`,`startDate`,`endDate`,`membershipType`,`fee`) VALUES (?,?,?,?,?,?)";
      PreparedStatement st =conne.prepareStatement(sql );
-     st.setInt(1, Category.getCategoryID());
-     st.setString(2, Category.getCategoryName());
+     st.setInt(1, Membership.getMembershipID());
+     st.setInt(2, Membership.getUserID());
+      st.setString(3, Membership.getStartDate());
+     st.setString(4, Membership.getEndDate());
+     st.setString(5, Membership.getMembershipType());
+     st.setDouble(6, Membership.getFee());
      st.execute();
-          System.out.println("Category insert successfully ");
+          System.out.println("Memberships insert successfully ");
       conne.close();
       }
        catch (Exception e)  {
@@ -337,35 +357,29 @@ public class Librarymanagement {
   
      
  }
-  
-  
   
    //9
-  public static void insert (LibraryData.Categories  Category )    
+  public static void insert ( LibraryData.Reviews  Review )    
   {
      Connection conne =getConnection();
-      try  { 
-     String sql = "INSERT INTO `Categories`(`CategoryID`,`CategoryName`) VALUES (?,?)";
+     try  { 
+     String sql = "INSERT INTO `Reviews`(`reviewID`,`userID`,`bookID`,`rating`,`reviewText`,`reviewDate`) VALUES (?,?,?,?,?,?)";
      PreparedStatement st =conne.prepareStatement(sql );
-     st.setInt(1, Category.getCategoryID());
-     st.setString(2, Category.getCategoryName());
+     st.setInt(1, Review.getReviewID());
+     st.setInt(2, Review.getUserID());
+     st.setInt(3, Review.getBookID());
+     st.setInt(4, Review.getRating());
+     st.setString(5, Review.getReviewText());
+     st.setString(6, Review.getReviewDate());
      st.execute();
-          System.out.println("Category insert successfully ");
+          System.out.println("Reviews insert successfully ");
       conne.close();
       }
        catch (Exception e)  {
          System.out.println("could not insert to data");
          e.printStackTrace(); }
-  
      
  }
-  
-  
-  
-  
-  
-  
-  
   }
  
   
